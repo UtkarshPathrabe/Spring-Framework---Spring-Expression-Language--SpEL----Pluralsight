@@ -111,3 +111,59 @@ B. It is an annotation used specifically for writing SpEL expressions.
 C. It is anannotation used for wiring SpEL expressions in Spring.  
 D. It is an annotation used for writing SpEL expressions in metadata.  
 Answer: `It is an annotation used for injecting values in to Spring beans.`  
+
+Q08. In plain Java code, what SpEL expression would you write to access the first name of a comma (,) separated list of names? Assume that you have a defined variable called "names".  
+A. "#names.split(',')[0]"  
+B. "#names.split(",")[0]"  
+C. "names.split(',')[0]"  
+D. "{names.split(",")[0]}"  
+Answer: `"#names.split(',')[0]"`  
+
+Q09. In plain Java code, what SpEL expression would you write to access the country property from the systemProperties predefined variable?  
+A. "#{systemProperties['user.country']}"  
+B. "{#systemProperties['user.country']}"  
+C. "#systemProperties['user.country']"  
+D. "#systemProperties[user.country]"  
+Answer: `"#systemProperties['user.country']"`  
+
+Q10. You are using setter method wiring to set the value to the country property of a User bean with the user’s Locale specific information. what is the correct syntax? Assume you have a setter method as follows:  
+```
+public void setCountry(String country) {
+    this.country = country;
+}
+```  
+A.  
+```
+@Value("#{systemProperties[user.country]}")
+public void setCountry(String country) {
+    this.country = country;
+}
+```  
+B.  
+```
+@Value("#systemProperties['user.country']")
+public void setCountry(String country) {
+    this.country = country;
+}
+```  
+C.  
+```
+@Value("#{systemProperties['user.country']}")
+public void setCountry(String country) {
+    this.country = country;
+}
+```  
+D.  
+```
+@Value("#{systemProperty['user.country']}")
+public void setCountry(String country) {
+    this.country = country;
+}
+```  
+Answer:  
+```
+@Value("#{systemProperties['user.country']}")
+public void setCountry(String country) {
+    this.country = country;
+}
+```  
