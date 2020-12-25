@@ -213,3 +213,32 @@ Answer:
 @Value("#{cities.?[isCapital!= true]}")
 private List nonCapitalCities;
 ```  
+
+Q12. For a customer to get a list of shipping locations in the UK on the checkout page,if a map is defined as:  
+`private Map<String, List<City>> locationsByCountry;`  
+The key is the country code and the value is a list of shipping location cities in that country. What SpEL expression would result in this output?  
+A.  
+```
+@Value("#{(locationsByCountry.?[key=='UK'])}")
+private Map<String,List<City>> shippingLocations;
+```  
+B.  
+```
+@Value("#{(locationsByCountry?[key=='UK'])}")
+private Map<String,List<City>> shippingLocations;
+```  
+C.  
+```
+@Value("#(locationsByCountry.?[value=='UK'])")
+private Map<String,List<City>> shippingLocations;
+```  
+D.  
+```
+@Value("#{(locationsByCountry.?[value=='UK'])}")
+private Map<String,List<City>> shippingLocations;
+```  
+Answer:  
+```
+@Value("#{(locationsByCountry.?[key=='UK'])}")
+private Map<String,List<City>> shippingLocations;
+```  
