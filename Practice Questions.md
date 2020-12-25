@@ -104,3 +104,10 @@ Add the following line:
 `StandardEvaluationContext orderContext = new StandardEvaluationContext(order);`  
 And change line 5 to:  
 `parser.parseExpression("id").setValue(orderContext,"12345");`  
+
+Q07. What is correct about the @Value annotation?  
+A. It is an annotation used for injecting values in to Spring beans.  
+B. It is an annotation used specifically for writing SpEL expressions.  
+C. It is anannotation used for wiring SpEL expressions in Spring.  
+D. It is an annotation used for writing SpEL expressions in metadata.  
+Answer: `It is an annotation used for injecting values in to Spring beans.`  
