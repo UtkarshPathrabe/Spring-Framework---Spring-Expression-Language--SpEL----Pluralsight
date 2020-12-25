@@ -72,3 +72,34 @@ B. "#expression"
 C. "{#expression}"  
 D. "{expression}"  
 Answer: `"#{expression}"`  
+
+Q06. In your application, there are two beans, User and Order, that have the same property name. You wrote the following code to set the Order bean’s name property with a value.  
+```
+1 SpelExpressionParser parser = new SpelExpressionParser();
+2 User user = new User();
+3 Order order = new Order();
+4 StandardEvaluationContext userContext = new StandardEvaluationContext(user);
+5 parser.parseExpression("id").setValue(userContext,"12345");
+6 System.out.println(order.getId());
+```  
+When you run it, you get “null” as the output. How would you correct the code so that you get the output as “12345”?  
+A. Add the following line:  
+`StandardEvaluationContext orderContext = new StandardEvaluationContext(order);`  
+Change line 5 as:  
+`parser.parseExpression("order.id").setValue(userContext,"12345");`  
+B. Add the following line:  
+`StandardEvaluationContext orderContext = new StandardEvaluationContext(order);`  
+Change line 5 as:  
+`parser.parseExpression("id").setValue(user,"12345");`  
+C. Add the following line:  
+`StandardEvaluationContext orderContext = new StandardEvaluationContext(order);`  
+And change line 5 to:  
+`parser.parseExpression("id").setValue(orderContext,"12345");`  
+D. Add the following line:  
+`StandardEvaluationContext orderContext = new StandardEvaluationContext(order);`  
+Change line 5 as:  
+`parser.parseExpression("id").setValue("12345");`  
+Answer: Add the following line:  
+`StandardEvaluationContext orderContext = new StandardEvaluationContext(order);`  
+And change line 5 to:  
+`parser.parseExpression("id").setValue(orderContext,"12345");`  
