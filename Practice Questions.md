@@ -99,10 +99,8 @@ D. Add the following line:
 `StandardEvaluationContext orderContext = new StandardEvaluationContext(order);`  
 Change line 5 as:  
 `parser.parseExpression("id").setValue("12345");`  
-Answer: 
-```
+Answer:  
 Add the following line:  
 `StandardEvaluationContext orderContext = new StandardEvaluationContext(order);`  
 And change line 5 to:  
-`parser.parseExpression("id").setValue(orderContext,"12345");`
-```  
+`parser.parseExpression("id").setValue(orderContext,"12345");`  
