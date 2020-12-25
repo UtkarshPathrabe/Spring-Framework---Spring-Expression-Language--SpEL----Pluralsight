@@ -1,23 +1,23 @@
-package com.example.speldemo.data;
+package com.example.speldemoxml.data;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
-@Component("user")
 public class User {
 
-    @Value("#{'John Doe'}")
     private String name;
-    @Value("#{30}")
+
     private int age;
+
     private String country;
+
     private String language;
     private String timeZone;
 
-    public User(@Value("#{systemProperties['user.country']}")String country,
-                @Value("#{systemProperties['user.language']}")String language) {
+    public User( String country, String language) {
         this.country = country;
         this.language = language;
+    }
+
+    public User() {
+
     }
 
     public String getName() {
@@ -56,8 +56,7 @@ public class User {
         return timeZone;
     }
 
-    @Value("#{systemProperties['user.timezone']}")
-    public void setTimeZone(String timeZone) {
+    public void setTimeZone(String timeZone) { //setter method wiring
         this.timeZone = timeZone;
     }
 }
