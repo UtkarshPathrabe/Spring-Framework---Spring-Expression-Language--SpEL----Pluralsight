@@ -167,3 +167,49 @@ public void setCountry(String country) {
     this.country = country;
 }
 ```  
+
+Q11. In your application, you have City bean as follows:  
+```
+@Component("city")
+public class City {
+	private String name;
+	private Boolean isCapital;
+	public City(String name, Boolean isCapital) {
+		this.name = name;
+		this.isCapital = isCapital;
+	}
+}
+```  
+Elsewhere in your application, you have populated a list of City beans as follows:  
+```
+List<City> cities = new ArrayList<>();
+cities.add(new City("Copenhagen",true));
+cities.add(new City("Hadsund",false));
+cities.add(new City("Arden",false));
+```  
+Now you need to wire some bean’s property with a list of non-capital cities. How would you write the SpEL expression using the @Value annotation for this?  
+A.  
+```
+@Value("#{cities?[isCapital!= true]}")
+private List<City> nonCapitalCities;
+```  
+B.  
+```
+@Value("#cities.?[isCapital!= true]")
+private List<City> nonCapitalCities;
+```  
+C.  
+```
+@Value("#{cities?[!isCapital]}")
+private List<City> nonCapitalCities;
+```  
+D.  
+```
+@Value("#{cities.?[isCapital!= true]}")
+private List nonCapitalCities;
+```  
+Answer:  
+```
+@Value("#{cities.?[isCapital!= true]}")
+private List nonCapitalCities;
+```  
